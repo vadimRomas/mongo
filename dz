@@ -46,12 +46,6 @@ db.getCollection('students').aggregate([
 db.getCollection('students').find({parents: {$size: 1}})
 
 13) Знайти батьків які не працюють
-db.getCollection('students').aggregate([
-{$group:{
-    _id:"$class",
-    avg:{$sum:"$avgScore"}}},
-    {$sort:{avg:-1}},{$limit:1}
-])
 db.getCollection('students').find({parents:{$nin:["profession"]}})
 
 14) Не працюючих батьків влаштувати офіціантами
