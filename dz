@@ -69,3 +69,8 @@ db.getCollection('students').update({"parents.profession":"teacher"},{$set :{avg
 db.getCollection('students').find({$and:[{class:{$lt:5}},{lessons:"physics"}]})
 
 18) Знайти найуспішніший клас
+db.getCollection('students').aggregate([
+{$group:{
+    _id:"$class",
+    avg:{$sum:"$avgScore"}}},{$sort:{avg:-1}},{$limit:1}])
+
